@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Matricula</title>
+	<link rel="stylesheet" href="matricula.css">
+</head>
+<body>
+<center>
+<fieldset>
+	<h1>Matricula</h1>
+
+	<label>Ingrese el nombre:</label>
+	<input type="text" id="nombre" placeholder="Ingresar el nombre">
+
+	<br><br>
+
+	<label>Ingrese el apellido:</label>
+	<input type="text" id="apellido" placeholder="Ingresar Apellidos">
+
+	<br><br>
+
+	<label>Ingrese DNI:</label>
+	<input type="number" id="dni" placeholder="Ingresar DNI">
+
+	<br><br>
+
+	<label>Ingrese correo:</label>
+	<input type="email" id="correo" placeholder="Ingresar Correo">
+
+	<br><br>
+
+	<label>Ingresar el N° de telefono:</label>
+	<input type="number" id="numero" placeholder="Ingresar N° telefono">
+
+	<br><br>
+	
+	<label>Carrera a estudiar:</label>
+	<select id="carrera">
+	</select>
+
+	<br><br>
+	<button onclick="procesar()">Matricular</button>
+
+</fieldset>
+</center>
+
+<center> 
+	<br>
+	<p id="mensaje"></p>
+</center>    
+
+<script>
+	const carreras = [
+		"Diseño y Desarrollo de Software",
+		"Ciberseguridad y Redes",
+		"Inteligencia Artificial y Ciencia de Datos",
+		"Administración de Empresas",
+		"Contabilidad y Finanzas",
+		"Marketing Digital y Comercio Electrónico",
+		"Administración de Negocios Internacionales",
+		"Diseño Gráfico y Visual",
+		"Comunicación Audiovisual y Multimedia",
+		"Enfermería Técnica",
+		"Fisioterapia y Rehabilitación"
+	];
+
+	const select = document.getElementById('carrera');
+
+	let opcionDefault = document.createElement('option');
+	opcionDefault.textContent = "---------------Carreras Disponibles---------------";
+	opcionDefault.value = "";
+	select.appendChild(opcionDefault);
+
+	carreras.forEach(c => {
+		let opt = document.createElement('option');
+		opt.value = c;
+		opt.textContent = c;
+		select.appendChild(opt);
+	});
+
+	function procesar() {
+		let nombre = document.getElementById('nombre').value;
+		let apellido = document.getElementById('apellido').value;
+		let dni = document.getElementById('dni').value;
+		let correo = document.getElementById('correo').value;
+		let numero = document.getElementById('numero').value;
+		let carrera = document.getElementById('carrera').value;
+
+		if(nombre === "" || carrera === "") {
+			document.getElementById('mensaje').textContent = "Faltan datos, completa todo";
+			return;
+		}
+
+		document.getElementById('mensaje').textContent = 
+			"Hola " + nombre + " " + apellido + "\n"+"la  matricula se a echo  correctamente para la carrera de  " + carrera;
+	}
+
+
+
+</script>
+<br><br><br><br><br>
+</body>
+</html>
